@@ -1,0 +1,21 @@
+node_modules/
+.env
+*.log
+.DS_Store
+Thumbs.db
+
+# Local databases / generated data
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads / runtime files
+uploads/
+
+# Next.js build outputs
+web/.next/
+web/out/
+
+# Requirement documents (keep local; commit summaries instead)
+QUY-CHE-THI-CUOI-KY.pdf
+QUY-CHE-THI-CUOI-KY.txt
