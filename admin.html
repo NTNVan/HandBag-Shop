@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Quản Lý Shop Túi Xách</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Login Panel -->
+        <div id="login-panel" class="login-panel">
+            <div class="login-box">
+                <div class="login-header-gradient">
+                    <div class="login-icon">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <h2>Đăng Nhập</h2>
+                    <p class="login-subtitle">Đăng nhập để trải nghiệm mua sắm tốt nhất</p>
+                </div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i> Tên đăng nhập
+                        </label>
+                        <input type="text" id="username" required placeholder="Nhập tên đăng nhập">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i> Mật khẩu
+                        </label>
+                        <input type="password" id="password" required placeholder="Nhập mật khẩu">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-gradient">
+                        <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                    </button>
+                </form>
+                <div class="demo-info">
+                    Chưa có tài khoản? <a href="#" class="text-primary">Đăng ký ngay</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="admin-panel" class="admin-panel" style="display: none;">
+            <header class="admin-header">
+                <div class="admin-logo">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h1>BagShop Admin</h1>
+                </div>
+                <div class="header-actions">
+                    <a href="/" class="btn btn-outline-white">
+                        <i class="fas fa-home"></i> Trang chủ
+                    </a>
+                    <span id="admin-username" class="username"></span>
+                    <button id="logout-btn" class="btn btn-secondary">Đăng xuất</button>
+                </div>
+            </header>
+
+            <!-- Navigation Tabs -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="products">📦 Quản Lý Sản Phẩm</button>
+                <button class="tab-btn" data-tab="orders">📋 Quản Lý Đơn Hàng</button>
+            </div>
+
+            <!-- Products Management Tab -->
+            <div id="products-tab" class="tab-content active">
+                <section class="section">
+                    <h2>Thêm / Cập Nhật Sản Phẩm</h2>
+                    <form id="product-form" class="product-form">
+                        <input type="hidden" id="product-id">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-name">Tên sản phẩm *</label>
+                                <input type="text" id="product-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-type">Loại túi *</label>
+                                <select id="product-type" required>
+                                    <option value="tote">Túi Tote</option>
+                                    <option value="crossbody">Túi Đeo Chéo</option>
+                                    <option value="backpack">Balo Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-material">Chất liệu *</label>
+                                <input type="text" id="product-material" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-price">Giá (VNĐ) *</label>
+                                <input type="number" id="product-price" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-stock">Số lượng *</label>
+                                <input type="number" id="product-stock" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-image">URL Hình ảnh *</label>
+                                <input type="text" id="product-image" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-description">Mô tả</label>
+                            <textarea id="product-description" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <span id="form-btn-text">Thêm Sản Phẩm</span>
+                            </button>
+                            <button type="button" id="reset-form-btn" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="section">
+                    <h2>Danh Sách Sản Phẩm</h2>
+                    <div id="products-list" class="products-list"></div>
+                </section>
+            </div>
+
+            <!-- Orders Management Tab -->
+            <div id="orders-tab" class="tab-content">
+                <section class="section">
+                    <h2>Danh Sách Đơn Hàng</h2>
+                    <div class="filter-group">
+                        <label for="order-status-filter">Lọc theo trạng thái:</label>
+                        <select id="order-status-filter">
+                            <option value="">Tất cả</option>
+                            <option value="pending">Chờ xác nhận</option>
+                            <option value="confirmed">Đã xác nhận</option>
+                            <option value="shipping">Đang giao</option>
+                            <option value="completed">Hoàn thành</option>
+                            <option value="cancelled">Đã hủy</option>
+                        </select>
+                    </div>
+                    <div id="orders-list" class="orders-list"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Detail Modal -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="order-detail"></div>
+        </div>
+    </div>
+
+    <script src="/admin.js"></script>
+</body>
+</html>

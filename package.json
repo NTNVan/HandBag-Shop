@@ -1,0 +1,40 @@
+{
+  "name": "handbag-shop",
+  "version": "1.0.0",
+  "description": "Website bán túi xách - Hệ thống quản lý shop đơn giản",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "web:dev": "npm --prefix web run dev",
+    "web:build": "npm --prefix web run build",
+    "web:start": "npm --prefix web run start",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down"
+  },
+  "keywords": [
+    "handbag",
+    "ecommerce",
+    "shop",
+    "nodejs",
+    "express",
+    "sql-server"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^12.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "handbag-shop": "file:",
+    "jsonwebtoken": "^9.0.2",
+    "mssql": "^10.0.1",
+    "multer": "^2.0.2",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
