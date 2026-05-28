@@ -1,0 +1,31 @@
+# Legacy (Express + static HTML) Docker image
+# Runs with SQLite fallback so no SQL Server is required.
+
+FROM node:20-bookworm-slim
+
+WORKDIR /app
+
+# Install deps first (better layer caching)
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+
+# Copy only what legacy app needs
+COPY app.js ./
+COPY db.js ./
+COPY db-sqlite.js ./
+COPY public ./public
+COPY admin.html ./
+COPY admin.js ./
+COPY styles.css ./
+
+# `uploads/` is intentionally excluded from build context via .dockerignore.
+# Create it so the server can serve/mount it at runtime.
+RUN mkdir -p uploads
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV DB_DRIVER=sqlite
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]

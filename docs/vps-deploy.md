@@ -38,10 +38,16 @@ Ví dụ:
 
 ### 3.2 Tạo env cho web
 
-Tạo file `/opt/handbag-shop/web/.env` (tham khảo `web/.env.example`):
+Tại `/opt/handbag-shop`, copy file `.env.example` thành `.env`, sau đó điền giá trị thật.
+
+Hoặc tự tạo file `/opt/handbag-shop/.env` (cùng cấp với `docker-compose.yml`):
 
 - `NEXT_PUBLIC_SUPABASE_URL=...`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY=...`
+
+Tuỳ chọn:
+
+- `NEXT_PUBLIC_SITE_URL=https://<domain-cua-ban>`
 
 ### 3.3 Run docker compose
 
@@ -79,6 +85,31 @@ Kiểm tra:
 
 - `https://example.com` vào được
 
+---
+
+## 4B) Domain + SSL bằng Docker (ít bước hơn)
+
+Nếu bạn muốn mọi thứ chạy bằng Docker (bao gồm Caddy), repo đã có file [../docker-compose.vps.yml](../docker-compose.vps.yml).
+
+### Bước 1: Chuẩn bị Caddyfile
+
+- Copy file [../deploy/Caddyfile.example](../deploy/Caddyfile.example) thành `deploy/Caddyfile`
+- Sửa `example.com` thành domain thật
+
+### Bước 2: Chạy compose VPS
+
+Tại `/opt/handbag-shop`:
+
+- `docker compose -f docker-compose.vps.yml up -d --build`
+
+### Bước 3: Mở firewall (nếu cần)
+
+Đảm bảo VPS mở port `80` và `443`.
+
+### Bước 4: Kiểm tra HTTPS
+
+- `https://<domain>` vào được
+
 ## 5) Cloudflare (optional)
 
 Nếu dùng Cloudflare:
@@ -89,5 +120,5 @@ Nếu dùng Cloudflare:
 
 ## 6) Ghi chú bảo mật
 
-- Không commit file `web/.env`
+- Không commit file `.env`
 - Supabase RLS đã cấu hình trong migrations (bảo vệ dữ liệu theo user/admin)

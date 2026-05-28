@@ -4,6 +4,12 @@ node_modules/
 .DS_Store
 Thumbs.db
 
+# Web app local env (never commit)
+web/.env*
+
+# Web dependencies
+web/node_modules/
+
 # Local databases / generated data
 *.db
 *.sqlite
@@ -15,6 +21,9 @@ uploads/
 # Next.js build outputs
 web/.next/
 web/out/
+
+# VPS deploy (local-only)
+deploy/Caddyfile
 
 # Requirement documents (keep local; commit summaries instead)
 QUY-CHE-THI-CUOI-KY.pdf

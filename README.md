@@ -15,6 +15,8 @@ Thư mục `web/` là bản triển khai theo stack Next.js + TypeScript + Tailw
 - Build: `npm run web:build`
 - Docker: `npm run docker:up`
 
+> Hướng dẫn Docker chi tiết (mục 6): xem `docs/docker.md`.
+
 ### Deploy VPS
 
 - Xem: `docs/vps-deploy.md`

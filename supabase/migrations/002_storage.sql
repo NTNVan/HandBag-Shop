@@ -1,5 +1,10 @@
 -- Supabase Storage policies (product-images bucket)
--- Run after creating the bucket in Supabase Dashboard (Storage -> Create bucket)
+-- This migration attempts to create the bucket automatically (idempotent).
+
+-- Create bucket (public) if it doesn't exist yet
+insert into storage.buckets (id, name, public)
+values ('product-images', 'product-images', true)
+on conflict (id) do nothing;
 
 -- Ensure RLS is enabled on storage objects
 alter table if exists storage.objects enable row level security;

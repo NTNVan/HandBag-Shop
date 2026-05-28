@@ -10,6 +10,7 @@
     "web:build": "npm --prefix web run build",
     "web:start": "npm --prefix web run start",
     "docker:up": "docker compose up --build",
+    "docker:legacy": "docker compose -f docker-compose.legacy.yml up --build",
     "docker:down": "docker compose down"
   },
   "keywords": [

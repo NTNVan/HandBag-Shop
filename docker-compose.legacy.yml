@@ -1,0 +1,13 @@
+services:
+  legacy:
+    build:
+      context: .
+      dockerfile: Dockerfile.legacy
+    ports:
+      - "${LEGACY_PORT:-3001}:3000"
+    environment:
+      PORT: "3000"
+      DB_DRIVER: "sqlite"
+    volumes:
+      - ./handbag-shop.db:/app/handbag-shop.db
+      - ./uploads:/app/uploads

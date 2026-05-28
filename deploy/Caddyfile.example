@@ -1,0 +1,7 @@
+# Copy to Caddyfile and replace example.com with your real domain.
+# Caddy will automatically provision and renew SSL certificates.
+
+example.com {
+  encode gzip
+  reverse_proxy web:3000
+}
