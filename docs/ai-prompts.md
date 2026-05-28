@@ -106,3 +106,16 @@ Thêm Dockerfile + docker-compose cho Next app và hướng dẫn deploy
 - Output summary:
   - Thêm `web/Dockerfile`, `web/docker-compose.yml`, docs `docs/vps-deploy.md`
   - Thêm root `docker-compose.yml` để chạy bằng `docker compose up --build`
+
+### Prompt 7 — Deploy production URL (Vercel)
+
+- Date: 2026-05-28
+- Prompt:
+
+```
+deploy lên vercel và xác nhận https
+```
+
+- Output summary:
+  - Live URL: `https://hand-bag-shop-2giw.vercel.app`
+  - Verify: `curl.exe -I https://hand-bag-shop-2giw.vercel.app` → `HTTP/1.1 200 OK`

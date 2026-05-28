@@ -44,6 +44,15 @@ Mục tiêu: tick đủ để chắc chắn "đạt yêu cầu tối thiểu" th
   - [ ] Host Caddy (xem [vps-deploy.md](vps-deploy.md))
   - [ ] Hoặc Docker + Caddy (dùng [../docker-compose.vps.yml](../docker-compose.vps.yml))
 
+### Nếu bạn deploy bằng Vercel (có HTTPS) thay vì VPS
+
+> Lưu ý: Quy chế ghi "Deploy lên VPS". Vercel vẫn cho URL thật + SSL nhưng có thể không được tính là VPS.
+> Hãy hỏi giảng viên xem Vercel có được chấp nhận thay cho VPS không.
+
+- [ ] Live URL (Vercel): `https://...vercel.app`
+- [ ] Verify: `curl -I https://...vercel.app` trả `HTTP/1.1 200 OK`
+- [ ] (Khuyến nghị) Screenshot Vercel dashboard + domain/HTTPS
+
 ## 7) Git/GitHub commit history
 
 - [ ] Repo có commit history rõ ràng (Conventional commits)
